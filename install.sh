@@ -3,7 +3,7 @@ cd AgarVM
 pip install textual
 sleep 2
 python3 installer.py
-docker build -t AgarVM . --no-cache
+docker build -t agarvm . --no-cache
 cd ..
 
 sudo apt update
