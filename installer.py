@@ -64,6 +64,7 @@ class AgarVM(Screen):
                     ("TLauncher", 4),
                     ("GIMP", 5),
                     ("GZDoom", 6),
+                    ("Krita", 7),
                     id="apps"
                 ),),
         )
