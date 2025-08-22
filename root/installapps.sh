@@ -68,5 +68,9 @@ if jq ".apps | contains([6])" "$json_file" | grep -q true; then
     chmod +x /installable-apps/gzdoom.sh
     /installable-apps/gzdoom.sh
 fi
+if jq ".apps | contains([7])" "$json_file" | grep -q true; then
+    chmod +x /installable-apps/krita.sh
+    /installable-apps/krita.sh
+fi
 
 rm -rf /installable-apps
