@@ -15,9 +15,10 @@ def savejson(json):
 
 
 Head = """
-# AgarVM Installer
+# BY USING THIS TOOL YOU AGREE THAT ANYTHING THAT YOU GET IN TROUBLE FOR OR HAPPENS 
+# TO YOUR COMPUTER IS NOT MY FAULT. YOU CHOSE TO USE THIS
 
-> AgarVM (Powered by DesktopOnCodespaces and based on blobby-boi's BlobeVM)
+> Press the "Install" button below to install the VM.
 """
 InstallHead = """
 # AgarVM Installer
@@ -27,7 +28,7 @@ LINES = ["KDE Plasma (Heavy)", "XFCE4 (Lightweight)",
          "I3 (Very Lightweight)", "GNOME 42 (Very Heavy)", "Cinnamon", "LXQT"]
 
 
-class InstallScreen(Screen):
+class AgarVM(Screen):
     CSS_PATH = "installer.tcss"
 
     def compose(self) -> ComposeResult:
@@ -35,7 +36,7 @@ class InstallScreen(Screen):
         yield Markdown(InstallHead)
         yield Horizontal(
             Vertical(
-                Label("Default Apps (you should keep them)"),
+                Label("Default Apps"),
                 SelectionList[int](
                     ("Wine", 0, True),
                     ("Chrome", 1, True),
@@ -61,6 +62,8 @@ class InstallScreen(Screen):
                     ("Synaptic", 2),
                     ("AQemu (VMs)", 3),
                     ("TLauncher", 4),
+                    ("GIMP", 5),
+                    ("GZDoom", 6),
                     id="apps"
                 ),),
         )
@@ -73,7 +76,7 @@ class InstallScreen(Screen):
             ),)
         yield Horizontal(
             Button.error("Back", id="back"),
-            Button.warning("Install NOW", id="in"),
+            Button.warning("Install now", id="in"),
         )
 
     def on_button_pressed(self, event: Button.Pressed) -> None:
@@ -101,7 +104,7 @@ class InstallApp(App):
         if event.button.id == "cancel":
             print("")
         if event.button.id == "install":
-            self.push_screen(InstallScreen())
+            self.push_screen(AgarVM())
 
 
 if __name__ == "__main__":

@@ -60,6 +60,13 @@ if jq ".apps | contains([4])" "$json_file" | grep -q true; then
     chmod +x /installable-apps/tlauncher.sh
     /installable-apps/tlauncher.sh
 fi
-# clean stuff
+if jq ".apps | contains([5])" "$json_file" | grep -q true; then
+    chmod +x /installable-apps/gimp.sh
+    /installable-apps/gimp.sh
+fi
+if jq ".apps | contains([6])" "$json_file" | grep -q true; then
+    chmod +x /installable-apps/gzdoom.sh
+    /installable-apps/gzdoom.sh
+fi
 
 rm -rf /installable-apps
