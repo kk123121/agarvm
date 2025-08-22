@@ -17,3 +17,8 @@ that tab and you will see a blue link on the port 3000. Copy and paste that link
 you used to install AgarVM is still there and bam. You are now in Agar! The next thing I think you should do
 is read the "ArgarVM.txt" thing on your desktop. It will explain a lot about agar and just some general things
 on how not to get cought. **Happy evading school!**
+
+# PLEASE READ THIS!
+If there are any bugs please add an issue on the github because I 
+dont use this vm all the time as its a passion project after I found
+out about VNC which will allow me to use linux servers in the browser.
