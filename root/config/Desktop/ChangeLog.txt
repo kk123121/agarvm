@@ -1,0 +1,12 @@
+========================================================================
+- Fixed the errors with installing apps in the setup
+- Added some new apps like krita, gzdoom and more!
+- Added a custom wallpaper for agar because I felt like it needs one.
+- Now theres a logo !!
+========================================================================
+
+If there are any bugs please add an issue on the github because I 
+dont use this vm all the time as its a passion project after I found
+out about VNC which will allow me to use linux servers in the browser.
+
+========================================================================

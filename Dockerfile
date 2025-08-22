@@ -15,15 +15,8 @@ COPY options.json /
 # Copy specific files from /root/
 COPY /root/ /
 
-# Update system
-RUN \
-  echo "**** update system ****" && \
-  set -e && \
-  apt-get update && \
-  apt-get upgrade -y
 
-
-# install neofetch for the dweebs that like to flex their chromebooks that have celerons 😂
+# Install neofetch for the dweebs that like to flex their chromebooks that have celerons 😂
 RUN \
   echo "**** install neofetch ****" && \
   apt-get install -y neofetch
@@ -33,9 +26,31 @@ RUN \
   echo "**** install packages ****" && \
   add-apt-repository -y ppa:mozillateam/ppa && \
   apt-get update && \
-  DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y firefox jq wget && \
+  DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y firefox jq wget curl && \
   chmod +x /install-de.sh && \
   /install-de.sh
+
+# Download wallpaper and set it for GNOME desktop
+RUN \
+  echo "**** download and set wallpaper ****" && \
+  mkdir -p /config/Pictures && \
+  curl -o /config/Pictures/AGAR.png https://raw.githubusercontent.com/kk123121/wallpaper/refs/heads/main/AGAR.png && \
+  chmod 644 /config/Pictures/AGAR.png && \
+  mkdir -p /config/.config/dconf && \
+  echo "[org/gnome/desktop/background]" > /config/.config/dconf/user && \
+  echo "picture-uri='file:///config/Pictures/AGAR.png'" >> /config/.config/dconf/user && \
+  echo "picture-options='zoom'" >> /config/.config/dconf/user && \
+  echo "color-shading-type='solid'" >> /config/.config/dconf/user && \
+  echo "primary-color='#000000000000'" >> /config/.config/dconf/user && \
+  echo "secondary-color='#000000000000'" >> /config/.config/dconf/user && \
+  chown -R 1000:1000 /config/Pictures /config/.config
+
+# Update system
+RUN \
+  echo "**** update system ****" && \
+  set -e && \
+  apt-get update && \
+  apt-get upgrade -y
 
 # Run installapps.sh
 RUN \
