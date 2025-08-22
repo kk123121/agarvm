@@ -15,6 +15,12 @@ COPY options.json /
 # Copy specific files from /root/
 COPY /root/ /
 
+# Update system
+RUN \
+  echo "**** update system ****" && \
+  set -e && \
+  apt-get update && \
+  apt-get upgrade -y
 
 # Install neofetch for the dweebs that like to flex their chromebooks that have celerons 😂
 RUN \
